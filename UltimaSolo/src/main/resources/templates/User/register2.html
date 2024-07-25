@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+</head>
+<body>
+<div class="loginbox">
+    <header>
+        <h1>Registro</h1>
+    </header>
+    <main>
+        <form th:action="@{/register}" th:object="${user}" method="post" id="registerForm" class="form" autocomplete="off">
+            <div class="input-group">
+                <input type="text" id="username" name="username" class="input" th:field="*{username}" minlength="6" required>
+                <label class="label" for="username">Nome de usuario</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" class="input" th:field="*{email}" required>
+                <label class="label" for="email">Email</label>
+            </div>
+            <div class="password-container input-group">
+                <input type="password" id="password" name="password" class="input" th:field="*{password}" required>
+                <label class="label" for="password">Senha</label>
+                <button type="button" id="togglePassword">Mostrar</button>
+            </div>
+            <div class="password-container input-group">
+                <input type="password" id="confirmPassword" name="confirmPassword" class="input" th:field="*{confirmPassword}" required>
+                <label class="label" for="confirmPassword">Confirmar senha</label>
+                <button type="button" id="toggleConfirmPassword">Mostrar</button>
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+        <p th:text="${message}" id="message"></p>
+    </main>
+</div>
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>
